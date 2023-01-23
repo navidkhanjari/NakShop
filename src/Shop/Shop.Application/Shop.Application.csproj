@@ -4,4 +4,18 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Categories\Delete\" />
+    <Folder Include="Users\" />
+    <Folder Include="SiteEntities\" />
+    <Folder Include="Sellers\" />
+    <Folder Include="Roles\" />
+    <Folder Include="Products\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.Application\Common.Application.csproj" />
+    <ProjectReference Include="..\Shop.Domain\Shop.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

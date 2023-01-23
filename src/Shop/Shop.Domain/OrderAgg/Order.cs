@@ -45,37 +45,37 @@ namespace Shop.Domain.OrderAgg
 
         public int ItemCount => Items.Count;
 
-        //public bool SyncOrderWithInventory(IOrderDomainService domainService)
-        //{
-        //    if (Status != OrderStatus.Pending)
-        //        throw new InvalidDomainDataException();
-        //    bool isChanged = false;
+        public bool SyncOrderWithInventory(IOrderDomainService domainService)
+        {
+            if (Status != OrderStatus.Pending)
+                throw new InvalidDomainDataException();
+            bool isChanged = false;
 
-        //    for (int i = Items.Count - 1; i >= 0; i--)
-        //    {
-        //        var item = Items[i];
-        //        var inventory = domainService.GetInventory(item.InventoryId);
-        //        if (item.Price != inventory.Price || item.DiscountPercentage != inventory.DiscountPercentage)
-        //        {
-        //            item.ChangePrice(inventory.Price, inventory.DiscountPercentage);
-        //            isChanged = true;
-        //        }
-        //        if (inventory.Count == 0)
-        //        {
-        //            Items.RemoveAt(i);
-        //            isChanged = true;
-        //            continue;
-        //        }
+            for (int i = Items.Count - 1; i >= 0; i--)
+            {
+                var item = Items[i];
+                var inventory = domainService.GetInventory(item.InventoryId);
+                if (item.Price != inventory.Price || item.DiscountPercentage != inventory.DiscountPercentage)
+                {
+                    item.ChangePrice(inventory.Price, inventory.DiscountPercentage);
+                    isChanged = true;
+                }
+                if (inventory.Count == 0)
+                {
+                    Items.RemoveAt(i);
+                    isChanged = true;
+                    continue;
+                }
 
-        //        if (item.Count > inventory.Count)
-        //        {
-        //            item.ChangeCount(inventory.Count);
-        //            isChanged = true;
-        //        }
-        //    }
+                if (item.Count > inventory.Count)
+                {
+                    item.ChangeCount(inventory.Count);
+                    isChanged = true;
+                }
+            }
 
-        //    return isChanged;
-        //}
+            return isChanged;
+        }
         public void AddItem(OrderItem item, IOrderDomainService domainService)
         {
             ChangeOrderGuard();

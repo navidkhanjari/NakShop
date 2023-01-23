@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.Domain.SellerAgg.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace Shop.Domain.OrderAgg.Services
     public interface IOrderDomainService
     {
         bool InventoryIsLessThan(Guid inventoryId, long count);
+        InventoryResult GetInventory(Guid id);
     }
 }
