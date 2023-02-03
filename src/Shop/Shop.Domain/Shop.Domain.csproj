@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="SiteEntities\FooterLinks\" />
-    <Folder Include="UserAgg\Repository\" />
   </ItemGroup>
 
   <ItemGroup>

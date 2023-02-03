@@ -48,7 +48,7 @@ namespace Shop.Domain.UserAgg
         }
         
         public void Edit(string name, string family, string phoneNumber
-            , string email, Gender gender, string password, IUserDomainService domainService)
+            , string email, Gender gender, IUserDomainService domainService)
         {
             Guard(phoneNumber, domainService);
             if (!string.IsNullOrWhiteSpace(email))
@@ -56,7 +56,7 @@ namespace Shop.Domain.UserAgg
             Name = name;
             Family = family;
             PhoneNumber = phoneNumber;
-            Password = password;
+
 
             Email = email;
             Gender = gender;

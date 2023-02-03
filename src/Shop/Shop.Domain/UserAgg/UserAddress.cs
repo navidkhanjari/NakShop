@@ -1,5 +1,6 @@
 ﻿using Common.Domain;
 using Common.Domain.Exceptions;
+using Common.Domain.ValueObjects;
 using System;
 
 namespace Shop.Domain.UserAgg
@@ -12,11 +13,11 @@ namespace Shop.Domain.UserAgg
         public string PostalCode { get; private set; }
         public string Name { get; private set; }
         public string Family { get; private set; }
-        public string PhoneNumber { get; private set; }
+        public PhoneNumber PhoneNumber { get; private set; }
         public string PostalAddress { get; private set; }
         public bool ActiveAddress { get; internal set; }
 
-        public UserAddress(string shire, string city, string postalCode, string postalAddress, string phoneNumber, string name, string family )
+        public UserAddress(string shire, string city, string postalCode, string postalAddress, PhoneNumber phoneNumber, string name, string family )
         {
             Guard(shire, city, postalCode, postalAddress,
             phoneNumber, name, family );
@@ -33,7 +34,7 @@ namespace Shop.Domain.UserAgg
         }
 
         public void Edit(string shire, string city, string postalCode, string postalAddress,
-     string phoneNumber, string name, string family)
+     PhoneNumber phoneNumber, string name, string family)
         {
             Guard(shire, city, postalCode, postalAddress,
                  phoneNumber, name, family);
@@ -52,8 +53,12 @@ namespace Shop.Domain.UserAgg
         {
             ActiveAddress = true;
         }
-        private void Guard(string shire, string city, string postalCode, string postalAddress, string phoneNumber, string name, string family)
+        private void Guard(string shire, string city, string postalCode, string postalAddress, PhoneNumber phoneNumber, string name, string family)
         {
+
+            if (phoneNumber == null)
+                throw new NullOrEmptyDomainDataException();
+
             NullOrEmptyDomainDataException.CheckString(shire, nameof(shire));
             NullOrEmptyDomainDataException.CheckString(city, nameof(city));
             NullOrEmptyDomainDataException.CheckString(postalCode, nameof(postalCode));
