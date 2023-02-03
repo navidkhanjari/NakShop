@@ -10,7 +10,6 @@
     <Folder Include="SiteEntities\" />
     <Folder Include="Sellers\" />
     <Folder Include="Roles\" />
-    <Folder Include="Products\" />
   </ItemGroup>
 
   <ItemGroup>
