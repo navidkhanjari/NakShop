@@ -8,8 +8,6 @@
     <Folder Include="Categories\Delete\" />
     <Folder Include="Users\" />
     <Folder Include="SiteEntities\" />
-    <Folder Include="Sellers\" />
-    <Folder Include="Roles\" />
   </ItemGroup>
 
   <ItemGroup>

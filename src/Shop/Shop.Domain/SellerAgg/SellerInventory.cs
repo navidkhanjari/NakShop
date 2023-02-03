@@ -11,12 +11,12 @@ namespace Shop.Domain.SellerAgg
         public Guid ProductId { get; private set; }
         public int Count { get; private set; }
         public int Price { get; private set; }
-        public int DiscountPercentage { get; private set; }
+        public int? DiscountPercentage { get; private set; }
 
         private SellerInventory()
         {
         }
-        public SellerInventory(Guid productId, int count, int price, int discountPercentage)
+        public SellerInventory(Guid productId, int count, int price, int? discountPercentage)
         {
             if (price < 1 || count < 0)
                 throw new InvalidDomainDataException();
@@ -31,7 +31,7 @@ namespace Shop.Domain.SellerAgg
         }
 
 
-        public void Edit(int count, int price, int discountPercentage)
+        public void Edit(int count, int price, int? discountPercentage)
         {
             if (price < 1 || count < 0)
                 throw new InvalidDomainDataException();

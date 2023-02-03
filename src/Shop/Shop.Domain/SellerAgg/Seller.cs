@@ -41,7 +41,7 @@ namespace Shop.Domain.SellerAgg
             LastUpdate = DateTime.Now;
         }
 
-        public void Edit(string shopName, ISellerDomainService domainService)
+        public void Edit(string shopName, SellerStatus Status, ISellerDomainService domainService)
         {
             Guard(shopName, UserId, domainService);
             ShopName = shopName;
@@ -59,7 +59,7 @@ namespace Shop.Domain.SellerAgg
             Inventories.Add(inventory);
         }
 
-        public void EditInventory(Guid inventoryId, int count, int price, int discountPercentage)
+        public void EditInventory(Guid inventoryId, int count, int price, int? discountPercentage)
         {
             var currentInventory = Inventories.FirstOrDefault(f => f.Id == inventoryId);
             if (currentInventory == null)

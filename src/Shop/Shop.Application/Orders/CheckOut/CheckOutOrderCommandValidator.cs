@@ -44,6 +44,7 @@ namespace Shop.Application.Orders.CheckOut
               .MaximumLength(11).WithMessage("شماره موبایل نامعتبر است")
               .MinimumLength(11).WithMessage("شماره موبایل نامعتبر است");
 
-          
+
+        }
     }
 }
