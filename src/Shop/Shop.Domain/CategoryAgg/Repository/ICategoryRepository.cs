@@ -5,6 +5,6 @@ namespace Shop.Domain.CategoryAgg.Repository
 {
     public interface ICategoryRepository : IBaseRepository<Category>
     {
-        void HardDelete(Category category);
+
     }
 }
