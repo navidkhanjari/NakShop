@@ -13,12 +13,15 @@ using Shop.Infrastructure.Persistent.Ef.Aggregates.ProductAgg;
 using Shop.Infrastructure.Persistent.Ef.Aggregates.RoleAgg;
 using Shop.Infrastructure.Persistent.Ef.Aggregates.SellerAgg;
 using Shop.Infrastructure.Persistent.Ef.Aggregates.UserAgg;
+using Shop.Infrastructure.Persistent.Dapper;
+using Shop.Infrastructure.Persistent.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Shop.Infrastructure
 {
     public class InfrastructureBootstrapper
     {
-        public static void Init(IServiceCollection services)
+        public static void Init(IServiceCollection services,string connectionString)
         {
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
@@ -28,6 +31,12 @@ namespace Shop.Infrastructure
             services.AddTransient<IBannerRepository, BannerRepository>();
             services.AddTransient<ISliderRepository, SliderRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+
+            services.AddTransient(_ => new DapperContext(connectionString));
+            services.AddDbContext<ShopContext>(option =>
+            {
+                option.UseSqlServer(connectionString);
+            });
         }
     }
 }
