@@ -1,9 +1,11 @@
-﻿using MediatR;
+﻿using Common.Query.Filters;
+using MediatR;
 
 namespace Common.Query
 {
-    public interface IBaseQuery<TResponse> : IRequest<TResponse>
+    public interface IBaseQuery<TResponse> : IRequest<TResponse>where TResponse : class
     {
 
     }
+
 }
