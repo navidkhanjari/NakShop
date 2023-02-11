@@ -1,12 +1,19 @@
 ﻿using Common.Application._Utilities;
 using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Shop.Application.Categories;
+using Shop.Application.Products;
+using Shop.Application.Sellers;
+using Shop.Application.Users;
+using Shop.Domain.CategoryAgg;
+using Shop.Domain.ProductAgg.Services;
+using Shop.Domain.SellerAgg.Services;
+using Shop.Domain.UserAgg.Service;
 using Shop.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shop.Presentation.Facade;
+using Shop.Query.Categories.GetById;
+
 
 namespace Shop.Config
 {
@@ -15,17 +22,17 @@ namespace Shop.Config
         public static void RegisterShopDependency(this IServiceCollection services, string connectionString)
         {
             InfrastructureBootstrapper.Init(services, connectionString);
-            //services.AddMediatR(typeof(Directories).Assembly);
-            //services.AddMediatR(typeof(GetCategoryByIdQuery).Assembly);
-            //services.AddTransient<IProductDomainService, ProductDomainService>();
-            //services.AddTransient<IUserDomainService, UserDomainService>();
-            //services.AddTransient<ICategoryDomainService, CategoryDomainService>();
-            //services.AddTransient<ISellerDomainService, SellerDomainService>();
+            services.AddMediatR(typeof(Directories).Assembly);
+            services.AddMediatR(typeof(GetCategoryByIdQuery).Assembly);
+            services.AddTransient<IProductDomainService, ProductDomainService>();
+            services.AddTransient<IUserDomainService, UserDomainService>();
+            services.AddTransient<ICategoryDomainService, CategoryDomainService>();
+            services.AddTransient<ISellerDomainService, SellerDomainService>();
 
 
-            //services.AddValidatorsFromAssembly(typeof(CreateRoleCommandValidator).Assembly);
+            services.AddValidatorsFromAssembly(typeof(CreateRoleCommandValidator).Assembly);
 
-            //services.InitFacadeDependency();
+            services.InitFacadeDependency();
         }
     }
 }

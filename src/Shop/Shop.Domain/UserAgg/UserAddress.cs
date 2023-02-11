@@ -7,6 +7,10 @@ namespace Shop.Domain.UserAgg
 {
     public class UserAddress : BaseEntity
     {
+        private UserAddress()
+        {
+
+        }
         public Guid UserId { get; internal set; }
         public string Shire { get; private set; }
         public string City { get; private set; }

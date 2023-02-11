@@ -10,9 +10,9 @@ namespace Shop.Application.Users.Register
     internal class RegisterUserCommandHandler : IBaseCommandHandler<RegisterUserCommand>
     {
         private readonly IUserRepository _repository;
-        private readonly IUserDomainService _domainService;
+        private readonly UserDomainService _domainService;
 
-        public RegisterUserCommandHandler(IUserRepository repository, IUserDomainService domainService)
+        public RegisterUserCommandHandler(IUserRepository repository, UserDomainService domainService)
         {
             _repository = repository;
             _domainService = domainService;

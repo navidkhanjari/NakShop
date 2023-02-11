@@ -57,12 +57,16 @@ namespace Shop.Infrastructure.Persistent.Aggregates.OrderAgg
                     .HasMaxLength(100);
             });
 
-            //builder.OwnsOne(b => b.ShippingMethod, option =>
-            //{
-            //    option.Property(b => b.ShippingType)
-            //        .IsRequired(false)
-            //        .HasMaxLength(100);
-            //});
+            builder.OwnsOne(b => b.OrderDeliveryInfo, option =>
+            {
+                option.Property(b => b.ShippingType)
+                    .IsRequired(false)
+                    .HasMaxLength(100);
+
+                option.Property(b => b.PostTrackingCode)
+                    .IsRequired(false)
+                    .HasMaxLength(100);
+            });
         }
     }
 }
