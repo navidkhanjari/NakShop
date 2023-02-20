@@ -9,7 +9,7 @@ namespace Common.Application
         public static IServiceCollection RegisterCommonApplication(this IServiceCollection service)
         {
             service.AddTransient(typeof(IPipelineBehavior<,>), typeof(CommandValidationBehavior<,>));
-
+           
             return service;
         }
     }

@@ -2,6 +2,7 @@
 using Shop.Domain.UserAgg;
 using Shop.Domain.UserAgg.Repository;
 using Shop.Domain.UserAgg.Service;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 

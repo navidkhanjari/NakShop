@@ -1,0 +1,9 @@
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('../fonts/iranyekan/IRANYekanXVF.woff') format('woff-variations'),
+    url('../fonts/iranyekan/IRANYekanXVF.woff') format('woff');
+    font-weight: 100 1000;
+    font-display: fallback;
+
+}

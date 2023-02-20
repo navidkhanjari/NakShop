@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using Shop.Presentation.Facade.Categories;
 using Shop.Presentation.Facade.Orders;
 using Shop.Presentation.Facade.Products;
@@ -21,6 +22,7 @@ namespace Shop.Presentation.Facade
     {
         public static void InitFacadeDependency(this IServiceCollection services)
         {
+      
             services.AddScoped<ICategoryFacade, CategoryFacade>();
             services.AddScoped<IOrderFacade, OrderFacade>();
             services.AddScoped<IProductFacade, ProductFacade>();
@@ -29,7 +31,6 @@ namespace Shop.Presentation.Facade
             services.AddScoped<IBannerFacade, BannerFacade>();
             services.AddScoped<ISliderFacade, SliderFacade>();
             services.AddScoped<ISellerInventoryFacade, SellerInventoryFacade>();
-
             services.AddScoped<IUserFacade, UserFacade>();
             services.AddScoped<IUserAddressFacade, UserAddressFacade>();
 
