@@ -16,6 +16,8 @@ using Shop.Infrastructure.Persistent.Ef.Aggregates.UserAgg;
 using Shop.Infrastructure.Persistent.Dapper;
 using Shop.Infrastructure.Persistent.Context;
 using Microsoft.EntityFrameworkCore;
+using Common.Application.EmailUtil;
+using Common.Infrastructure.Email;
 
 namespace Shop.Infrastructure
 {
@@ -32,7 +34,9 @@ namespace Shop.Infrastructure
             services.AddTransient<ISliderRepository, SliderRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
 
-       
+            //services.AddTransient<IEmailService, EmailService>();
+
+ 
             services.AddTransient(_ => new DapperContext(connectionString));
             services.AddDbContext<ShopContext>(option =>
             {

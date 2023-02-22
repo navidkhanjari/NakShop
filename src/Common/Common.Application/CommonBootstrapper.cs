@@ -6,11 +6,10 @@ namespace Common.Application
 {
     public static class CommonBootstrapper
     {
-        public static IServiceCollection RegisterCommonApplication(this IServiceCollection service)
+
+        public static void Init(IServiceCollection service)
         {
             service.AddTransient(typeof(IPipelineBehavior<,>), typeof(CommandValidationBehavior<,>));
-           
-            return service;
         }
     }
 }

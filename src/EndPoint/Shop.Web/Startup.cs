@@ -29,9 +29,9 @@ namespace Shop.Web
            
             services.AddRazorPages();
             var connection = Configuration.GetConnectionString("DefaultConnection");
-            ShopBootstrapper.RegisterShopDependency(services,connection);
-            CommonBootstrapper.RegisterCommonApplication(services);
-
+            ShopBootstrapper.Init(services,connection);
+            CommonBootstrapper.Init(services);
+     
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

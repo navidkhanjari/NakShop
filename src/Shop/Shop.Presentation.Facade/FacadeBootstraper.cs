@@ -18,21 +18,21 @@ using System.Threading.Tasks;
 
 namespace Shop.Presentation.Facade
 {
-    public static class FacadeBootstrapper
+    public  class FacadeBootstrapper
     {
-        public static void InitFacadeDependency(this IServiceCollection services)
+        public static void InitFacadeDependency( IServiceCollection services)
         {
       
-            services.AddScoped<ICategoryFacade, CategoryFacade>();
-            services.AddScoped<IOrderFacade, OrderFacade>();
-            services.AddScoped<IProductFacade, ProductFacade>();
-            services.AddScoped<IRoleFacade, RoleFacade>();
-            services.AddScoped<ISellerFacade, SellerFacade>();
-            services.AddScoped<IBannerFacade, BannerFacade>();
-            services.AddScoped<ISliderFacade, SliderFacade>();
-            services.AddScoped<ISellerInventoryFacade, SellerInventoryFacade>();
-            services.AddScoped<IUserFacade, UserFacade>();
-            services.AddScoped<IUserAddressFacade, UserAddressFacade>();
+            services.AddTransient<ICategoryFacade, CategoryFacade>();
+            services.AddTransient<IOrderFacade, OrderFacade>();
+            services.AddTransient<IProductFacade, ProductFacade>();
+            services.AddTransient<IRoleFacade, RoleFacade>();
+            services.AddTransient<ISellerFacade, SellerFacade>();
+            services.AddTransient<IBannerFacade, BannerFacade>();
+            services.AddTransient<ISliderFacade, SliderFacade>();
+            services.AddTransient<ISellerInventoryFacade, SellerInventoryFacade>();
+            services.AddTransient<IUserFacade, UserFacade>();
+            services.AddTransient<IUserAddressFacade, UserAddressFacade>();
 
         }
     }
