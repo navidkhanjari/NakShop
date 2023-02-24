@@ -11,8 +11,8 @@ namespace Shop.Application.Users.Create
     public class CreateUserCommandHandler : IBaseCommandHandler<CreateUserCommand>
     {
         private readonly IUserRepository _repository;
-        private readonly UserDomainService _userDomainService;
-        public CreateUserCommandHandler(IUserRepository repository, UserDomainService userDomainService)
+        private readonly IUserDomainService _userDomainService;
+        public CreateUserCommandHandler(IUserRepository repository, IUserDomainService userDomainService)
         {
             _repository = repository;
             _userDomainService = userDomainService;

@@ -1,4 +1,5 @@
 using Common.Application;
+using Common.Domain.Repository;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shop.Config;
+using Shop.Infrastructure._Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +31,11 @@ namespace Shop.Web
            
             services.AddRazorPages();
             var connection = Configuration.GetConnectionString("DefaultConnection");
+
             ShopBootstrapper.Init(services,connection);
             CommonBootstrapper.Init(services);
-     
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

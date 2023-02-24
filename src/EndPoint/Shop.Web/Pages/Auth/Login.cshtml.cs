@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Shop.Web.Pages.Auth
 {
+    [BindProperties]
     public class LoginModel : PageModel
     {
         public void OnGet()

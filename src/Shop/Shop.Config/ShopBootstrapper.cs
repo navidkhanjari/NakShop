@@ -1,6 +1,7 @@
 ﻿using Common.Application._Utilities;
 using Common.Application.FileUtil.Interfaces;
 using Common.Application.FileUtil.Services;
+using Common.Domain.Repository;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,9 +15,11 @@ using Shop.Domain.CategoryAgg;
 using Shop.Domain.OrderAgg.Services;
 using Shop.Domain.ProductAgg.Services;
 using Shop.Domain.SellerAgg.Services;
+using Shop.Domain.UserAgg;
 using Shop.Domain.UserAgg.Repository;
 using Shop.Domain.UserAgg.Service;
 using Shop.Infrastructure;
+using Shop.Infrastructure._Utilities;
 using Shop.Presentation.Facade;
 using Shop.Query.Categories.GetById;
 using System.Reflection;
@@ -36,6 +39,10 @@ namespace Shop.Config
             services.AddTransient<ISellerDomainService, SellerDomainService>();
             services.AddTransient<IOrderDomainService, OrderDomainService>();
             services.AddTransient<ILocalFileService, LocalFileService>();
+
+           
+
+
 
             services.AddMediatR(typeof(RegisterUserCommand).Assembly);
 
