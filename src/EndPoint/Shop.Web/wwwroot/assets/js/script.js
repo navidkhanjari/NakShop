@@ -7,27 +7,9 @@
 
 "use strict";
 
-// Preloader
-const preLoader = function () {
-  let preloaderWrapper = document.getElementById("preloader");
-  window.onload = () => {
-    preloaderWrapper.classList.add("loaded");
-  };
-};
-preLoader();
 
-// getSiblings
-var getSiblings = function (elem) {
-  const siblings = [];
-  let sibling = elem.parentNode.firstChild;
-  while (sibling) {
-    if (sibling.nodeType === 1 && sibling !== elem) {
-      siblings.push(sibling);
-    }
-    sibling = sibling.nextSibling;
-  }
-  return siblings;
-};
+
+
 
 /* Slide Up */
 var slideUp = (target, time) => {

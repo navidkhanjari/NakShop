@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Common.Application;
+using Common.Application.SecurityUtil;
 using Common.Application.Validation;
 using Common.Domain.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,7 @@ namespace Shop.Web.Pages.Auth
         }
         public async Task<IActionResult> OnPost()
         {
-            var res = await _userFacade.RegisterUser(new RegisterUserCommand(new PhoneNumber(PhoneNumber),Password));
+            var res = await _userFacade.RegisterUser(new RegisterUserCommand(new PhoneNumber(PhoneNumber), PasswordHelper.EncodePasswordMd5(Password)));
             if (res.Status == OperationResultStatus.Success)
                 res.Message = "ثبت نام با موفقیت انجام شد";
 

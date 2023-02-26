@@ -1,5 +1,6 @@
 ﻿using Common.Application;
 using MediatR;
+using Shop.Application.Users.ChangePassword;
 using Shop.Application.Users.Create;
 using Shop.Application.Users.Edit;
 using Shop.Application.Users.Register;
@@ -50,6 +51,11 @@ namespace Shop.Presentation.Facade.Users
         }
 
         public async Task<OperationResult> RegisterUser(RegisterUserCommand command)
+        {
+            return await _mediator.Send(command);
+        }
+
+        public async Task<OperationResult> ChangeUserPassword(ChangeUserPasswordCommand command)
         {
             return await _mediator.Send(command);
         }

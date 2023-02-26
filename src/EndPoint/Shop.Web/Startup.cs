@@ -1,6 +1,7 @@
 using Common.Application;
 using Common.Domain.Repository;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Shop.Config;
 using Shop.Infrastructure._Utilities;
+using Shop.Web.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +38,27 @@ namespace Shop.Web
             CommonBootstrapper.Init(services);
 
 
+            services.RegisterWebDependencies();
+            services.AddHttpClient();
+            services.AddHttpContextAccessor();
+            services.AddAutoMapper(typeof(MapperProfile).Assembly);
+            #region Authentication
+            services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                option.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            }).AddCookie(option =>
+            {
+                option.LoginPath = "/Auth/Login";
+                option.LogoutPath = "/Auth/LogOut";
+                option.ExpireTimeSpan = TimeSpan.FromDays(30);
+                option.AccessDeniedPath = "/AccessDenied";
+            });
+
+            #endregion
+           
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,7 +79,8 @@ namespace Shop.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
+           
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

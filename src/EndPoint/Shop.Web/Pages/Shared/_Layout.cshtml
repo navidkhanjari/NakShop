@@ -15,7 +15,7 @@
     @await RenderSectionAsync("Header", false)
     @RenderBody();
     <partial name="_FooterReferencesPartial" />
-
+    @await RenderSectionAsync("Footer", false)
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
