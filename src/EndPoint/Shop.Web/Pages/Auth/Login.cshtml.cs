@@ -78,6 +78,7 @@ namespace Shop.Web.Pages.Auth
             };
             await HttpContext.SignInAsync(principal, properties);
             await SetShopCart(user.Id);
+            SuccessAlert("ورود با موفقیت انجام شد . خوش آمدید");
             return LocalRedirect(ReturnUrl);
         }
 

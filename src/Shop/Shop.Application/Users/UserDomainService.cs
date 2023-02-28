@@ -17,10 +17,7 @@ namespace Shop.Application.Users
             _repository = repository;
         }
 
-        public bool IsEmailExist(string email)
-        {
-            return _repository.Exists(f => f.Email == email);
-        }
+      
 
         public bool IsPhoneNumberExist(string phoneNumber)
         {

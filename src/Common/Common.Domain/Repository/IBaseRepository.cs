@@ -8,6 +8,7 @@ namespace Common.Domain.Repository
 
     public interface IBaseRepository<T> where T : BaseEntity
     {
+   
         Task<T?> GetAsync(Guid id);
         Task<List<T?>> GetAllAsyc();
 

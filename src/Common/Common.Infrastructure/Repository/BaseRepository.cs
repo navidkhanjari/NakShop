@@ -79,5 +79,7 @@ namespace Common.Infrastructure.Repository
         {
             return await Context.Set<T>().ToListAsync();
         }
+
+        
     }
 }

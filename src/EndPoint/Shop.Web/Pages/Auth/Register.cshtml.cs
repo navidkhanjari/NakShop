@@ -44,6 +44,7 @@ namespace Shop.Web.Pages.Auth
         }
         public async Task<IActionResult> OnPost()
         {
+            
             var res = await _userFacade.RegisterUser(new RegisterUserCommand(new PhoneNumber(PhoneNumber), PasswordHelper.EncodePasswordMd5(Password)));
             if (res.Status == OperationResultStatus.Success)
                 res.Message = "ثبت نام با موفقیت انجام شد";

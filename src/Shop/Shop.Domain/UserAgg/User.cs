@@ -1,4 +1,5 @@
-﻿using Common.Domain;
+﻿using Common.Application;
+using Common.Domain;
 using Common.Domain.Exceptions;
 using Shop.Domain.UserAgg.Enums;
 using Shop.Domain.UserAgg.Service;
@@ -32,7 +33,7 @@ namespace Shop.Domain.UserAgg
         {
             Guard(phoneNumber, domainService);
             if (!string.IsNullOrWhiteSpace(email))
-                EmailGuard(email, domainService);
+        
             Name = name;
             Family = family;
             PhoneNumber = phoneNumber;
@@ -52,7 +53,6 @@ namespace Shop.Domain.UserAgg
         {
             Guard(phoneNumber, domainService);
             if (!string.IsNullOrWhiteSpace(email))
-                EmailGuard(email, domainService);
             Name = name;
             Family = family;
             PhoneNumber = phoneNumber;
@@ -144,21 +144,13 @@ namespace Shop.Domain.UserAgg
         {
             NullOrEmptyDomainDataException.CheckString(phoneNumber, nameof(phoneNumber));
             if (phoneNumber.Length != 11)
-                throw new InvalidDomainDataException("شماره موبایل نامعتبر است");
+                throw new InvalidOperationException("تلفن همراه معتبر نمی باشد");
             if (phoneNumber != PhoneNumber)
                 if (domainService.IsPhoneNumberExist(phoneNumber))
-                    throw new InvalidDomainDataException("شماره موبایل تکراری است");
+                    throw new InvalidOperationException("شماره موبایل تکراری است");
 
         }
-        private void EmailGuard(string email, IUserDomainService domainService)
-        {
-            if (email.IsValidEmail() == false)
-                throw new InvalidDomainDataException(" ایمیل  نامعتبر است");
-
-            if (email != Email)
-                if (domainService.IsEmailExist(email))
-                    throw new InvalidDomainDataException("ایمیل تکراری است");
-        }
+   
 
     }
 }

@@ -8,7 +8,7 @@ namespace Shop.Domain.UserAgg.Service
 {
     public interface IUserDomainService
     {
-        bool IsEmailExist(string email);
+   
         bool IsPhoneNumberExist(string phoneNumber);
     }
 }

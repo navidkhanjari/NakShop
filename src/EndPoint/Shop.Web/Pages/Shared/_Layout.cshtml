@@ -1,23 +1,30 @@
 ﻿
-<!doctype html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
+
 
 <head>
-    <meta charset="utf-8">
-    <title>ناک شاپ - فروشگاه اینترنتی</title>
-    <meta name="description" content="Morden Bootstrap HTML5 Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
+    <meta charset="utf-8" />
+    <title>ناک شاپ -@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Bootstrap 5 Landing Page Template" />
+    <meta name="keywords" content="Saas, Software, multi-uses, HTML, Clean, Modern" />
+    <meta name="author" content="JafarAbbasi" />
+    <meta name="email" content="jabasi26@gmail.com" />
+    <meta name="website" content="https://www.rtl-theme.com/author/tn_plugin/" />
+    <meta name="Version" content="v3.2.1" />
     <partial name="_HeaderReferencesPartial" />
+ 
 </head>
+
 <body>
-    @await RenderSectionAsync("preloader", false)
-    @await RenderSectionAsync("Header", false)
-    @RenderBody();
+
+    @RenderSection("Header", false)
+    @RenderSection("IndexHeader", false)
+    @RenderBody()
+    @RenderSection("Footer", false)
+    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
+
     <partial name="_FooterReferencesPartial" />
-    @await RenderSectionAsync("Footer", false)
-    @await RenderSectionAsync("Scripts", required: false)
-
-</body>
+    @RenderSection("Scripts", false)
+    </body>
 </html>
-
